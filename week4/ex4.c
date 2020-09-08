@@ -10,7 +10,7 @@ int main(int argc, char const *argv[]) {
     fgets(buf, sizeof(buf), stdin);
 
     // now there is no code that strips the arguments
-    // the background tasks after work because system() handles it ¯\_(ツ)_/¯
+    // the background tasks also work because system() handles it ¯\_(ツ)_/¯
 
     if (!strcmp(buf, "exit\n")) {
       return 0;
