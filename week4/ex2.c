@@ -41,4 +41,7 @@ processes)
      │     │     └─ex2
      │     ├─ex2───ex2
      │     └─ex2
+
+After each fork number of childs of the next process is decreases by one as it
+each child forks itself N-1 times
 */
