@@ -6,7 +6,7 @@ fi
 if ln -s ./num ./num.lock; then
 	trap "rm ./num.lock" EXIT
 
-	# this script could be in race condition
+	# this script no longer could be in race condition
 	if [ -e ./num ]; then
 		n=$(cat ./num)
 		n=$((n + 1))
