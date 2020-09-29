@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+  24878	   1400	   1432	  27710	   6c3e	/usr/bin/size
