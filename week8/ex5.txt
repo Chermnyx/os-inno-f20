@@ -1,1 +1,6 @@
-The physical address in the address in memory in actual hardware. The virtual address is the address of the program in virtual memory. The virtual memory can be bigger than physical memory and it is not necessary fits into physical memory so part of virtual memory is stored on the disc. Because of it we cannot use the same address to access both the physical memory and the virtual memory, we need to translate the virtual address to the physical address first. Some pages from virtual memory may not be loaded into physical memory so it should be loaded from the disc. Each program has it's different address space because there is not enough memory to keep all the running programs in it.
+The physical address in the address in memory in actual hardware.
+The virtual address is the address of the program in virtual memory.
+The virtual memory can be bigger than physical memory and it is not necessary fits into physical memory so part of virtual memory is stored on the disc.
+Because of it we cannot use the same address to access both the physical memory and the virtual memory, we need to translate the virtual address to the physical address first.
+Some pages from virtual memory may not be loaded into physical memory so it should be loaded from the disc.
+Each program has it's different address space because there is not enough memory to keep all the running programs in it.
