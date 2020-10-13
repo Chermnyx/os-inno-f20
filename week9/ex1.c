@@ -28,7 +28,7 @@ int main(int argc, char const* argv[]) {
 
   page_t* table = (page_t*)calloc(
       total_pages,
-      sizeof(int));  // [page_N (virt addr page number)] -> (page_t | NULL)
+      sizeof(page_t));  // [page_N (virt addr page number)] -> (page_t | NULL)
 
   for (i = 0; i < total_pages; ++i) {
     (table + i)->page_n = i;  // WARN: page with i=0 does not exist
