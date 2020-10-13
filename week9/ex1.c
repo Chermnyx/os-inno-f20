@@ -70,7 +70,8 @@ int main(int argc, char const* argv[]) {
     }
 
     for (j = 0; j < total_pages; ++j) {
-      (table + j)->bits = (j == accessed_page) | ((table + j)->bits >> 1);
+      (table + j)->bits = ((j == accessed_page) << (sizeof(size_t) - 1)) |
+                          ((table + j)->bits >> 1);
     }
   }
 
