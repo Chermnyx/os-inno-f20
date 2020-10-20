@@ -1,0 +1,13 @@
+> umask
+077
+> touch _ex3.txt
+> chmod a-x _ex3.txt
+> chmod u+rwx _ex3.txt
+> chmod o+rwx _ex3.txt
+> chmod g+rwx _ex3.txt # it's equal to user permissions now ¯\_(ツ)_/¯
+> ls -l _ex3.txt
+-rwxrwxrwx 1 chermnyx users 0 Oct 20 16:25 _ex3.txt*
+
+# 660 = (binary) 110 110 000 = (user: rw-) (group: rw-) (others: ---)
+# 775 = (binary) 111 111 101 = (user: rwx) (group: rwx) (others: r-x)
+# 777 = (binary) 111 111 111 = (user: rwx) (group: rwx) (others: rwx)

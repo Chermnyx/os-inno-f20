@@ -2,7 +2,7 @@
 
 > link ../week1/file.txt _ex2.txt
 
-> ls -i
+> ls -i -l
 total 4.0K
 5387131 -rw------- 3 chermnyx users   0 Oct 20 16:20 _ex1_1.txt
 5387131 -rw------- 3 chermnyx users   0 Oct 20 16:20 _ex1_2.txt
