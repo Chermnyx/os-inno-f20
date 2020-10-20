@@ -4,7 +4,7 @@
 > chmod a-x _ex3.txt
 > chmod u+rwx _ex3.txt
 > chmod o+rwx _ex3.txt
-> chmod g+rwx _ex3.txt # it's equal to user permissions now ¯\_(ツ)_/¯
+> chmod g=u _ex3.txt
 > ls -l _ex3.txt
 -rwxrwxrwx 1 chermnyx users 0 Oct 20 16:25 _ex3.txt*
 
