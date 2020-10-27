@@ -1,0 +1,23 @@
+The output of Program 1:
+```
+Hello
+Hello
+```
+The output of program 2:
+```
+Hello
+
+
+```
+
+The first program:
+Puts "Hello" to it's output buffer
+forks
+Adds "\n" to the buffer and prints the content of the buffer.
+
+The second program:
+Puts "Hello\n" to the buffer and prints it
+forks
+Puts "\n" to the buffer and prints it (twice after fork)
+
+In both cases the line buffer is used and it is flushed to the stdout after receiving "\n" character
