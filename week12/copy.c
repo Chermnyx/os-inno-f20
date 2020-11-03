@@ -18,7 +18,7 @@
 #include <unistd.h>
 
 #ifndef BUF_SIZE                /* Allow "cc -D" to override definition */
-#define BUF_SIZE 1024
+#define BUF_SIZE 1
 #endif
 
 int
@@ -39,12 +39,13 @@ main(int argc, char *argv[])
     if (inputFd == -1)
         printf("opening file %s", argv[1]);
 
-    openFlags = O_CREAT | O_WRONLY | O_TRUNC;
+    openFlags = O_CREAT | O_WRONLY | O_TRUNC
+    | O_SYNC;
 #ifdef SYNC
     openFlags |= O_SYNC;
 #endif
     filePerms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP |
-                S_IROTH | S_IWOTH | O_SYNC;      /* rw-rw-rw- */
+                S_IROTH | S_IWOTH;      /* rw-rw-rw- */
     outputFd = open(argv[2], openFlags, filePerms);
     if (outputFd == -1) {
         printf("opening file %s", argv[2]);

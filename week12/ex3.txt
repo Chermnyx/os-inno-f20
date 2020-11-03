@@ -1,20 +1,29 @@
 # big and small file
 qemu-img create ex3.small 1K
-qemu-img create ex3.big 500M
+qemu-img create ex3.big 1M
 
-# ./copy ex3.small ex3.small.copy -DBUF_SIZE=1  0.00s user 0.00s system 63% cpu 0.003 total
-# ./copy ex3.big ex3.big.copy -DBUF_SIZE=1  0.00s user 0.00s system 76% cpu 0.003 total
+# -DBUF_SIZE=1
+./copy ex3.small ex3.small.copy  0.00s user 0.00s system 97% cpu 0.004 total
+./copy ex3.big ex3.big.copy  0.95s user 31.58s system 99% cpu 32.615 total
 
-# ./copy ex3.small ex3.small.copy -DBUF_SIZE=128  0.00s user 0.00s system 72% cpu 0.003 total
-# ./copy ex3.big ex3.big.copy -DBUF_SIZE=128  0.00s user 0.00s system 59% cpu 0.004 total
+# In this case the file is buffered in the code and in the OS buffer so it takes only 1 disc write OP for the small file and not much writes for the big file
 
-# The time it takes to copy the files is really small. Let's modify the code to include O_SYNC flag.
+# -DBUF_SIZE=2048
+./copy ex3.small ex3.small.copy  0.00s user 0.00s system 88% cpu 0.001 total
+./copy ex3.big ex3.big.copy  0.00s user 0.03s system 96% cpu 0.032 total
 
-# ./copy ex3.small ex3.small.copy -DBUF_SIZE=1  0.00s user 0.00s system 74% cpu 0.003 total
-# ./copy ex3.big ex3.big.copy -DBUF_SIZE=1  0.00s user 0.00s system 73% cpu 0.002 total
+# In this case buffer is bigger so the reads occur much faster because of reading to big buffer. Writes use both buffers but the OS buffer is big so the copying time is low.
 
-# ./copy ex3.small ex3.small.copy -DBUF_SIZE=128  0.00s user 0.00s system 64% cpu 0.003 total
-# ./copy ex3.big ex3.big.copy -DBUF_SIZE=128  0.00s user 0.00s system 74% cpu 0.002 total
+# Let's modify the code to include O_SYNC flag.
 
-# The difference in all the cases is insignificant because i'm using NVME SSD and COW filesystem (so the actual copying is not performed).
-# Theoretically, the copying should be faster for small files. For small files it doesn't metter what the buffer is because the file can fit in the buffer entirely. For big files bigger buffer makes copying faster.
+# -DBUF_SIZE=1
+./copy ex3.small ex3.small.copy  0.00s user 0.30s system 4% cpu 6.636 total
+very big amount of time (it haven't finished copying even 30K in 5 minutes because of slow `sync()` on BTRFS partition)
+
+# This is the worst case scenario because the there is only 1 byte buffer for reads and writes. It takes huge amount of time to copy the file this way.
+
+# -DBUF_SIZE=2048
+# ./copy ex3.small ex3.small.copy  0.00s user 0.00s system 22% cpu 0.004 total
+# ./copy ex3.big ex3.big.copy  0.01s user 2.64s system 7% cpu 33.232 total
+
+# In this case the OS buffer for writes is disabled because of O_SYNC but each write OP writes 2048 bytes so the effect is the same as when the OS buffer is enabled.
