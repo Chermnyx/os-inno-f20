@@ -1,0 +1,3 @@
+1. Make all the dining philosophers eat sequentially. Then the circular waiting condition will break and there will be no deadlock.
+
+2. Make philosophers polite so that if no one of the philosophers can eat because he has only one fork some philosopher gives fork to another one. It will break non-preemption condition and the philosophers would be recovered from a deadlock.
