@@ -1,0 +1,16 @@
+Recovery:
+In an interactive system it's better to use this strategy because the other strategies are avoidance is expensive and we most likely cannot predict and prevent the deadlocks because it's depends on the user actions.
+
+Prevention:
+In this case we need break one of the 4 deadlock conditions:
+- Mutual exclusion condition
+	If all process could access a resource then it wouldn't cause a deadlock. Example use print daemon to hold the data to print. The daemon will send this data to the device. It's called spooling.
+- Hold and wait condition
+	We may force a process to have only 1 resource at a time. Then the process will eventually stop using the resource and give it to other processes.
+- No preemption condition
+	If we work only with preemptive resources then we can always stop process from using a resource; give it to other process and then give the resource back (ex: Disk or Network). Unfortunately we cannot do it with all the resources (ex. printer).
+- Circular wait condition
+	We can force processes to make a list of required resources beforehand. Then we can schedule the processes in such a way that deadlocks won't occur (as in ex. 1). The case when there is no available resources won't happen because at the beginning all the resources would be free. This method is suitable for periodic systems like batch systems or realtime systems because we run restricted set of tasks and we know all the details about the tasks.
+
+Avoidance:
+	In this case we break the circular wait condition as explained in Prevention section. If we when an which resources processes will use, we can schedule them in such a way that there is no deadlock or throw an error if there is always a deadlock (in case if there is not enough resources for some process at the beginning of scheduling of all the tasks)

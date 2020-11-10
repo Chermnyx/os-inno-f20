@@ -1,0 +1,68 @@
+Checking process 0 {
+  schedulable: 0
+  A   : 0 2 0
+  R[i]: 3 0 4
+  C[i]: 4 0 2
+}
+Checking process 1 {
+  schedulable: 0
+  A   : 0 2 0
+  R[i]: 4 0 2
+  C[i]: 3 0 4
+}
+Checking process 2 {
+  schedulable: 1
+  A   : 0 2 0
+  R[i]: 0 0 0
+  C[i]: 0 0 0
+}
+Checking process 0 {
+  schedulable: 0
+  A   : 0 2 0
+  R[i]: 3 0 4
+  C[i]: 4 0 2
+}
+Checking process 1 {
+  schedulable: 0
+  A   : 0 2 0
+  R[i]: 4 0 2
+  C[i]: 3 0 4
+}
+Checking process 3 {
+  schedulable: 1
+  A   : 0 2 0
+  R[i]: 0 0 0
+  C[i]: 0 0 0
+}
+Checking process 0 {
+  schedulable: 0
+  A   : 0 2 0
+  R[i]: 3 0 4
+  C[i]: 4 0 2
+}
+Checking process 1 {
+  schedulable: 0
+  A   : 0 2 0
+  R[i]: 4 0 2
+  C[i]: 3 0 4
+}
+Checking process 4 {
+  schedulable: 1
+  A   : 0 2 0
+  R[i]: 0 0 0
+  C[i]: 0 0 0
+}
+Checking process 0 {
+  schedulable: 0
+  A   : 0 2 0
+  R[i]: 3 0 4
+  C[i]: 4 0 2
+}
+Checking process 1 {
+  schedulable: 0
+  A   : 0 2 0
+  R[i]: 4 0 2
+  C[i]: 3 0 4
+}
+OOOPS: the process are not schedulable and will cause a deadlock!
+The problematic ones: 0 1
